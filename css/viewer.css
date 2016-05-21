@@ -63,8 +63,6 @@ html.device-mobile-optimized {
 body.device-mobile-optimized {
   overflow-x: hidden;
   overflow-y: scroll; }
-  body.device-mobile-optimized .POPUPS_ROOT {
-    width: 100%; }
   body.device-mobile-optimized #SITE_CONTAINER {
     width: 320px;
     overflow-x: visible;
@@ -75,6 +73,10 @@ body.device-mobile-optimized {
   body.device-mobile-optimized .SITE_ROOT {
     overflow-x: hidden;
     overflow-y: hidden; }
+  body.device-mobile-optimized.disableSiteScroll {
+    overflow-y: hidden; }
+    body.device-mobile-optimized.disableSiteScroll.device-mobile {
+      position: fixed; }
 
 body.device-mobile-non-optimized #SITE_CONTAINER > :not(.mobile-non-optimized-overflow) .SITE_ROOT {
   overflow-x: hidden;
@@ -114,8 +116,8 @@ body.fullScreenMode-scrollable.device-mobile-optimized {
   left: 0;
   overflow: auto;
   position: fixed;
+  right: 0;
   top: 0;
-  width: 100vw;
   z-index: 50; }
   .POPUPS_ROOT > div {
     /* page */
@@ -133,14 +135,16 @@ body.fullScreenMode-scrollable.device-mobile-optimized {
   display: flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
-          justify-content: center; }
+          justify-content: center;
+  overflow-y: hidden; }
   .fullScreenOverlay > .fullScreenOverlayContent {
     margin: 0 auto;
     position: absolute;
     right: 0;
     top: 0;
     left: 0;
-    bottom: 0; }
+    bottom: 0;
+    overflow: hidden; }
 
 body[contenteditable] {
   overflow-x: auto;
@@ -337,4 +341,46 @@ a.wixAppsLink img {
 
 .g-transparent-a:link, .g-transparent-a:visited {
   border-color: transparent; }
+
+.transitioning-comp {
+  -webkit-transition-property: all;
+  transition-property: all; }
+  .transitioning-comp * {
+    -webkit-transition: inherit;
+    transition: inherit; }
+
+.selectionSharerContainer {
+  position: absolute;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 10px 0px rgba(57, 86, 113, 0.24);
+  width: 142px;
+  height: 45px;
+  border-radius: 100px;
+  text-align: center; }
+  .selectionSharerContainer:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 42%;
+    /*controls horizontal position */
+    border-width: 10px 10px 0;
+    /* vary these values to change the angle of the vertex */
+    border-style: solid;
+    border-color: #ffffff transparent;
+    /* reduce the damage in FF3.0 */
+    display: block;
+    width: 0; }
+  .selectionSharerContainer .selectionSharerOption {
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: top;
+    margin: 14px 12px 12px 14px;
+    z-index: -1; }
+  .selectionSharerContainer .selectionSharerVerticalSeparator {
+    margin-top: 9px;
+    margin-bottom: 18px;
+    background-color: #eaf7ff;
+    height: 26px;
+    width: 1px;
+    display: inline-block; }
 /*# sourceMappingURL=viewer.css.map */
